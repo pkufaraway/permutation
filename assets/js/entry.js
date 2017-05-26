@@ -1,0 +1,1 @@
+var Search = require('./main.js');

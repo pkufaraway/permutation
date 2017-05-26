@@ -1,0 +1,25 @@
+/* Hide un-compiled mustache bindings
+until the Vue instance is ready */
+
+[v-cloak] {
+    display: none;
+}
+
+#main {
+    margin-top: 20px;
+}
+
+.column {
+    width: 600px;
+    border: 1px solid blueviolet;
+}
+
+.result {
+    width: 550px;
+    text-align: left;
+}
+
+.expansion {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,43 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/semantic.min.css">
+    <script type="text/javascript" src="./assets/css/semantic.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div class="ui input">
+            <input type="text" placeholder="几个数？" v-model="length" @keyup.enter="createNumbers(length)">
+            <div class="ui left pointing red basic label">
+                一共几个数？
+            </div>
+            <input type="text" placeholder="寻找的总额？" v-model="target">
+            <div class="ui left pointing red basic label">
+                寻找的总额？
+            </div>
+            <button class="ui olive basic button" @click="permutation()">
+                开始匹配
+            </button>
+
+
+        </div>
+        <ul>
+            <li v-for="line in result">
+                {{line}}
+            </li>
+        </ul>
+        <ul id="data">
+            <li v-for="income in numbers">
+                <div class="ui right pointing red basic label">
+                    {{income.id}}
+                </div>
+                <div class="ui input">
+                    <input type="text" placeholder="number" v-model="income.income">
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script type="text/javascript" src="./assets/js/bundle.js" charset="utf-8"></script>
