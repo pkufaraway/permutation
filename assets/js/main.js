@@ -1,13 +1,38 @@
 import Vue from 'vue'
+Vue.directive('focus', {
+    // When the bound element is inserted into the DOM...
+    inserted: function(el) {
+        // Focus the element
+        el.focus()
+        el.select()
+    }
+});
+
 var demo = new Vue({
     el: '#main',
     data: {
-        numbers: [],
+        numbers: [{
+            id: 0,
+            income: 0
+        }],
         target: 0,
         length: 0,
-        result: []
+        focus: 0,
+        result: [],
+        finished: false
     },
     methods: {
+        nextNumber: function(income) {
+            if (income.income == 0) {
+                demo.numbers.pop()
+                demo.finished = true
+            } else {
+                demo.numbers.push({
+                    id: income.id + 1,
+                    income: 0
+                })
+            }
+        },
         createNumbers: function(len) {
             console.log(len);
             demo.numbers = []
@@ -53,11 +78,18 @@ var demo = new Vue({
                     }
                 }
                 if (sum == demo.target) {
-                    var temp = "";
+                    var temp = sum.toString() + "=";
+                    var choices_filtered = choices.filter(function(element) {
+                        return element == 1;
+                    })
+                    var plusNumber = choices_filtered.length - 1;
                     for (var j = 0; j < len; j++) {
                         if (choices[j] == 1) {
                             temp += demo.numbers[j].income;
-                            temp += " ";
+                            if (plusNumber > 0) {
+                                temp += "+";
+                                plusNumber--;
+                            }
                         }
                     }
                     demo.result.push(temp);

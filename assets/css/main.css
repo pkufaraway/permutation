@@ -5,8 +5,16 @@ until the Vue instance is ready */
     display: none;
 }
 
+#notes {
+    margin: 20px;
+    width: 600px;
+    border: 1px solid olive;
+}
+
 #main {
-    margin-top: 20px;
+    width: 650px;
+    margin: 20px;
+    border: 1px solid lightgray;
 }
 
 .column {
