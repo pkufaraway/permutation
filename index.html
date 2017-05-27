@@ -8,33 +8,30 @@
 
 <body>
     <div id="main">
-        <div class="ui input">
-            <input type="text" placeholder="几个数？" v-model="length" @keyup.enter="createNumbers(length)">
-            <div class="ui left pointing red basic label">
-                一共几个数？
+        <p id="notes">
+            从第一个数开始输入，不用考虑大小顺序，输入一个数之后按回车可以输入下一个数（自动跳转） 数字默认是0，输入完最后一个数后，会生成新的输入框，当输入框的数是0时，会跳出总额输入框，在输入完总额后，按回车会显示结果。
+        </p>
+        <ul id="data">
+            <li v-for="income in numbers">
+                <div class="ui right pointing red basic label">
+                    数字{{income.id}}
+                </div>
+                <div class="ui input">
+                    <input type="text" placeholder="number" v-model="income.income" @keyup.enter="nextNumber(income)" v-focus>
+                </div>
+            </li>
+        </ul>
+        <div class="ui input" v-if="finished">
+            <div class="ui right pointing red basic label">
+                寻找的总额?
             </div>
-            <input type="text" placeholder="寻找的总额？" v-model="target">
-            <div class="ui left pointing red basic label">
-                寻找的总额？
-            </div>
-            <button class="ui olive basic button" @click="permutation()">
-                开始匹配
-            </button>
-
+            <input type="text" placeholder="寻找的总额？" v-model="target" @keyup.enter="permutation" v-focus>
 
         </div>
         <ul>
             <li v-for="line in result">
-                {{line}}
-            </li>
-        </ul>
-        <ul id="data">
-            <li v-for="income in numbers">
                 <div class="ui right pointing red basic label">
-                    {{income.id}}
-                </div>
-                <div class="ui input">
-                    <input type="text" placeholder="number" v-model="income.income">
+                    结果：{{line}}
                 </div>
             </li>
         </ul>
