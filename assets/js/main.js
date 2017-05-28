@@ -95,6 +95,9 @@ var demo = new Vue({
                     demo.result.push(temp);
                 }
             }
+            if (demo.result.length == 0) {
+                demo.result.push("没有找到结果!");
+            }
         }
     }
 
